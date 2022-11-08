@@ -33,11 +33,11 @@ const router = createBrowserRouter([
                 element: <MyReviews></MyReviews>,
             },
             {
-                path: '/products/:id',
+                path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
             },
             {
-                path: '/all-products',
+                path: '/services',
                 element: <AllService></AllService>,
             },
             {

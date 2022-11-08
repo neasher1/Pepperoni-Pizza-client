@@ -6,7 +6,7 @@ const AllService = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/all-products')
+        fetch('http://localhost:5000/services')
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(error => console.log(error))

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Service from './Service';
+import { FaArrowRight } from "react-icons/fa";
 
 const Services = () => {
 
@@ -28,7 +29,7 @@ const Services = () => {
                 }
             </div>
             <div className='text-center mt-10'>
-                <Link to='/all-products' className='btn btn-primary'>View Services</Link>
+                <Link to='/services' className='btn btn-primary'>View Services <FaArrowRight></FaArrowRight> </Link>
             </div>
         </div>
     );
