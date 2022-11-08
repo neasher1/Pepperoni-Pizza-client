@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Service from './Service';
 
-const Services = () => {
+const AllService = () => {
 
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/home-products')
+        fetch('http://localhost:5000/all-products')
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(error => console.log(error))
@@ -27,11 +26,8 @@ const Services = () => {
                     ></Service>)
                 }
             </div>
-            <div className='text-center mt-10'>
-                <Link to='/all-products' className='btn btn-primary'>View Services</Link>
-            </div>
         </div>
     );
 };
 
-export default Services;
+export default AllService;

@@ -3,6 +3,8 @@ import Main from "../../Layout/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import Home from "../../Pages/Home/Home/Home";
 import AddNewService from "../../Pages/Home/Services/AddNewService/AddNewService";
+import AllService from "../../Pages/Home/Services/AllService";
+import ServiceDetails from "../../Pages/Home/Services/ServiceDetails";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 import AllReviews from "../../Pages/Reviews/AllReviews/AllReviews";
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
             {
                 path: '/my-reviews',
                 element: <MyReviews></MyReviews>,
+            },
+            {
+                path: '/products/:id',
+                element: <ServiceDetails></ServiceDetails>,
+            },
+            {
+                path: '/all-products',
+                element: <AllService></AllService>,
             },
             {
                 path: '/blogs',
