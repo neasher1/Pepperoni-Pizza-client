@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -8,8 +9,6 @@ const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
 
-    const [success, setSuccess] = useState("");
-    const [error, setError] = useState("");
     const { createUser, signInGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -24,14 +23,13 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 form.reset();
-                setSuccess("User created successfully");
+                toast.success();
                 navigate('/');
                 console.log(user);
             })
             .catch(error => {
-                setError(error.message);
+                toast.error(error.message);
             })
-        setError('');
 
     }
 
@@ -40,12 +38,12 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 navigate('/');
+                toast.success();
                 console.log(user);
             })
             .catch(error => {
-                setError(error.message);
+                toast.error(error.message);
             })
-        setError('');
     }
 
     return (
@@ -85,10 +83,6 @@ const Register = () => {
                     </button>
                 </div>
                 <p className='text-center my-5'>Already have an account? <Link className='text-orange-600 font-semibold' to='/login'>Login</Link> </p>
-                <div className='my-5 text-center'>
-                    <p className='text-green-600'>{success}</p>
-                    <p className='bg-error'>{error}</p>
-                </div>
             </div>
         </div>
     );

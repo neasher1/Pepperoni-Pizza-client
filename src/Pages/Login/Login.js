@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -8,8 +9,6 @@ const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
 
-    const [success, setSuccess] = useState("");
-    const [error, setError] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -27,14 +26,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 form.reset();
-                setSuccess("User created successfully");
+                toast.success();
                 navigate(from, { replace: true });
                 console.log(user);
             })
             .catch(error => {
-                setError(error.message);
+                toast.error(error.message);
             })
-        setError('');
     }
 
     const handleSignInWithGoogle = () => {
@@ -42,12 +40,12 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 navigate('/');
+                toast.success();
                 console.log(user);
             })
             .catch(error => {
-                setError(error.message);
+                toast.error(error.message);
             })
-        setError('');
     }
 
     return (
@@ -81,10 +79,6 @@ const Login = () => {
                     </button>
                 </div>
                 <p className='text-center my-5'>New in Pepperoni? <Link className='text-orange-600 font-semibold' to='/register'>Register</Link> </p>
-                <div className='my-5 text-center'>
-                    <p className='text-green-600'>{success}</p>
-                    <p className='bg-error'>{error}</p>
-                </div>
             </div>
         </div>
     );
