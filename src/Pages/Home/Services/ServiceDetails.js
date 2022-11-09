@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaStar } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import ReviewInServiceDetails from './ReviewInServiceDetails';
 
 const ServiceDetails = () => {
 
@@ -10,6 +11,7 @@ const ServiceDetails = () => {
     const { _id, details, image, name, price, ratings } = service;
 
     const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([]);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -47,6 +49,15 @@ const ServiceDetails = () => {
 
     }
 
+    useEffect(() => {
+
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => setReviews(data))
+            .catch(error => console.log(error))
+
+    }, [])
+
     return (
         <div>
             <div className='grid md:grid-cols-2 gap-20 max-w-screen-xl mx-auto my-20 items-center'>
@@ -66,16 +77,39 @@ const ServiceDetails = () => {
                 </div>
 
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name='name' placeholder="Your Name" className="input input-bordered w-4/5" />
+                    {
+                        user?.uid
+                            ?
+                            <>
+                                <input type="text" name='name' placeholder="Your Name" className="input input-bordered w-4/5" />
+                                <br />
+                                <textarea name='comment' className="textarea textarea-bordered my-5 h-40 w-4/5 " placeholder="Write a review"></textarea>
+                            </>
+                            :
+                            <h2 className="text-4xl">Please Login to Add Review</h2>
+                    }
                     <br />
-                    <textarea name='comment' className="textarea textarea-bordered my-5 h-40 w-4/5 " placeholder="Write a review"></textarea>
-                    <br />
-                    <input type="submit" className="btn btn-primary" value={"Submit"} />
+                    {
+                        user?.uid
+                            ?
+                            <input type="submit" className="btn btn-primary" value={"Submit"} />
+                            :
+                            <Link className='btn btn-primary' to='/login'>Please Login</Link>
+                    }
                 </form>
             </div>
 
             <div className='my-20'>
                 <h2 className="text-5xl font-semibold text-center text-primary">See Our User Review</h2>
+
+                <div className='max-w-screen-xl mx-auto grid md:grid-cols-3 my-14'>
+                    {
+                        reviews.map(review => <ReviewInServiceDetails
+                            key={review._id}
+                            review={review}
+                        ></ReviewInServiceDetails>)
+                    }
+                </div>
             </div>
         </div>
     );
