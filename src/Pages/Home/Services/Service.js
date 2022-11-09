@@ -6,7 +6,6 @@ import 'react-photo-view/dist/react-photo-view.css';
 const Service = ({ product }) => {
 
     const { _id, name, image, price, details } = product;
-
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl mt-16">
             <figure>

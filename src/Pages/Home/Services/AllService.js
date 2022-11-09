@@ -20,10 +20,14 @@ const AllService = () => {
             </div>
             <div className='grid md:grid-cols-3'>
                 {
-                    products.map(product => <Service
-                        key={product._id}
-                        product={product}
-                    ></Service>)
+                    products.length > 0
+                        ?
+                        products.map(product => <Service
+                            key={product._id}
+                            product={product}
+                        ></Service>)
+                        :
+                        <div className="text-3xl my-24 text-center"><progress className="progress w-56"></progress></div>
                 }
             </div>
         </div>
