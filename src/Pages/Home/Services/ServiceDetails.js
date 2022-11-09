@@ -1,18 +1,49 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaStar } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const ServiceDetails = () => {
 
     const service = useLoaderData();
     const { _id, details, image, name, price, ratings } = service;
-    // console.log(service);
+
+    const { user } = useContext(AuthContext);
 
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value;
+        const customer = form.name.value;
         const comment = form.comment.value;
+        const email = user?.email;
+        const img = user?.photoURL;
+        console.log(img);
+
+        const review = {
+            service: _id,
+            serviceName: name,
+            customer: customer,
+            review: comment,
+            email,
+            img
+        }
+
+        fetch('http://localhost:5000/add-review', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review),
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("Review added successfully");
+                    form.reset();
+                }
+            })
+            .catch(error => console.log(error))
 
     }
 
@@ -28,7 +59,7 @@ const ServiceDetails = () => {
                         <div className="card-actions flex-row items-center ">
                             <p className='text-2xl font-semibold'>Price: ${price}</p>
                             {
-                                [...Array(ratings).keys()].map(rate => <FaStar></FaStar>)
+                                [...Array(ratings).keys()].map(rate => <FaStar key={rate}></FaStar>)
                             }
                         </div>
                     </div>
