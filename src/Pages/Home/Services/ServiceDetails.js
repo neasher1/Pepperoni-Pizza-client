@@ -102,7 +102,7 @@ const ServiceDetails = () => {
             <div className='my-20'>
                 <h2 className="text-5xl font-semibold text-center text-primary">See Our User Review</h2>
 
-                <div className='max-w-screen-xl mx-auto grid md:grid-cols-3 my-14'>
+                <div className='max-w-screen-xl mx-auto grid md:grid-cols-3 gap-5 my-14'>
                     {
                         reviews.map(review => <ReviewInServiceDetails
                             key={review._id}
