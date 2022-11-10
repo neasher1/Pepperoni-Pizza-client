@@ -3,7 +3,7 @@ import { FaChild } from 'react-icons/fa';
 
 const ReviewInServiceDetails = ({ review }) => {
 
-    const { img, serviceName, customer, email, service } = review;
+    const { img, serviceName, customer, email } = review;
     // console.log(review);
 
     return (
