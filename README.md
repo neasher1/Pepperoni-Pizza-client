@@ -3,7 +3,7 @@
 LIVE WEBSITE LINK [Pepperoni](https://pepperoni-client.web.app).
 
 ## About This Project
-- This Project is Mainly For Review Over my food Service
+- This Project is Mainly For Review Over my food Services
 
 ## Main Feature Of This Website 
 - Anyone Can Review On This website
