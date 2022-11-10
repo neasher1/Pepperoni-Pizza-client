@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             {
                 path: '/services/:id',
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/services/${params.id}`)
+                    return fetch(`https://pepperoni-server.vercel.app/services/${params.id}`)
                 },
                 element: <ServiceDetails></ServiceDetails>,
             },
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
             {
                 path: '/update/:id',
                 element: <UpdateReview></UpdateReview>,
-                loader: ({ params }) => fetch(`http://localhost:5000/update/${params.id}`)
+                loader: ({ params }) => fetch(`https://pepperoni-server.vercel.app/update/${params.id}`)
             },
             {
                 path: '/login',

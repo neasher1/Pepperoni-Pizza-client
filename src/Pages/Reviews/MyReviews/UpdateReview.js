@@ -17,7 +17,7 @@ const UpdateReview = () => {
         const updatedInfo = {
             message: message,
         };
-        fetch(`http://localhost:5000/update/${_id}`, {
+        fetch(`https://pepperoni-server.vercel.app/update/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

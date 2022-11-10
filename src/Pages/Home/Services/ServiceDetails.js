@@ -31,7 +31,7 @@ const ServiceDetails = () => {
             img
         }
 
-        fetch('http://localhost:5000/add-review', {
+        fetch('https://pepperoni-server.vercel.app/add-review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -51,7 +51,7 @@ const ServiceDetails = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:5000/reviews')
+        fetch('https://pepperoni-server.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
             .catch(error => console.log(error))

@@ -8,7 +8,7 @@ const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/my-reviews?email=${user?.email}`, {
+        fetch(`https://pepperoni-server.vercel.app/my-reviews?email=${user?.email}`, {
             headers: {
                 'content-type': 'application/json',
             }
@@ -19,7 +19,7 @@ const MyReviews = () => {
     // delete user
     const handleDelete = (id) => {
         // console.log(id)
-        fetch(`http://localhost:5000/my-reviews/${id}`, {
+        fetch(`https://pepperoni-server.vercel.app/my-reviews/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

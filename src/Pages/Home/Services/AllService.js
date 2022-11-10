@@ -6,7 +6,7 @@ const AllService = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://pepperoni-server.vercel.app/services')
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(error => console.log(error))

@@ -20,7 +20,7 @@ const AddNewService = () => {
             ratings
         }
 
-        fetch('http://localhost:5000/add-services', {
+        fetch('https://pepperoni-server.vercel.app/add-services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
