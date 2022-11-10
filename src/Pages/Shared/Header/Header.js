@@ -7,7 +7,7 @@ const Header = () => {
     const { user, signOutUser } = useContext(AuthContext);
 
     return (
-        <div className="navbar bg-primary text-primary-content">
+        <div className="navbar bg-primary text-primary-content grid md:grid-cols-2">
             <div className="flex-1">
                 <Link className="btn btn-ghost normal-case text-xl">Pepperoni</Link>
             </div>

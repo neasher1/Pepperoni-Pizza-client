@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import MyReviewsCard from './MyReviewsCard';
 
@@ -19,7 +18,7 @@ const MyReviews = () => {
     }, [user.email]);
     // delete user
     const handleDelete = (id) => {
-        console.log(id)
+        // console.log(id)
         fetch(`http://localhost:5000/my-reviews/${id}`, {
             method: 'DELETE',
         })
@@ -36,7 +35,7 @@ const MyReviews = () => {
     return (
         <div className='my-10'>
             {
-                myReviews.length > 0 ? <><h2 className='text-center font-semibold text-primary text-3xl'>MY REVIEWS</h2></> : <><div className='py-5 my-5'><h2 className='text-center py-5 my-5'>This User Have No Review</h2></div></>
+                myReviews.length > 0 ? <><h2 className='text-center font-semibold text-primary text-3xl'>MY REVIEWS</h2></> : <><div className='py-5 my-5'><h2 className='text-center py-5 my-5 text-3xl font-bold text-primary'>This User Have No Review</h2></div></>
             }
             <div className='my-20 max-w-screen-xl mx-auto grid md:grid-cols-3'>
                 {

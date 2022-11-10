@@ -7,7 +7,7 @@ const UpdateReview = () => {
 
     const { user } = useContext(AuthContext);
     const data = useLoaderData();
-    console.log(data);
+    // console.log(data);
     const { review, _id } = data;
 
     const updateReview = (event) => {

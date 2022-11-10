@@ -20,7 +20,7 @@ const ServiceDetails = () => {
         const comment = form.comment.value;
         const email = user?.email;
         const img = user?.photoURL;
-        console.log(img);
+        // console.log(img);
 
         const review = {
             service: _id,

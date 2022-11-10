@@ -13,7 +13,7 @@ const Services = () => {
             .then(data => setProducts(data))
             .catch(error => console.log(error))
     }, [])
-    console.log(products);
+    // console.log(products);
 
     return (
         <div className='my-20 max-w-screen-xl mx-auto'>
